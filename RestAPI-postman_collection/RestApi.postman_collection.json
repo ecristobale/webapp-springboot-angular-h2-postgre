@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "6fe226ce-f6d0-46d9-ab5c-f8723d7ee76b",
+		"name": "RestApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8081/restapi/entidad",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "345pasdf2340986asdf"
+					}
+				],
+				"url": {
+					"raw": "localhost:8081/restapi/entidad",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"restapi",
+						"entidad"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/restapi/entidad/{id}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "345pasdf2340986asdf"
+					}
+				],
+				"url": {
+					"raw": "localhost:8081/restapi/entidad/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"restapi",
+						"entidad",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/restapi/entidad/{not_found_id}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "345pasdf2340986asdf"
+					}
+				],
+				"url": {
+					"raw": "localhost:8081/restapi/entidad/8",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"restapi",
+						"entidad",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/restapi/entidad",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "345pasdf2340986asdf"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"entity_4_Added\",\r\n    \"description\": \"desc4_Added\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/restapi/entidad",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"restapi",
+						"entidad"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/restapi/entidad/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "345pasdf2340986asdf"
+					}
+				],
+				"url": {
+					"raw": "localhost:8081/restapi/entidad/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"restapi",
+						"entidad",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/restapi/entidad/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "345pasdf2340986asdf"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"entity_1_modif\",\r\n    \"description\": \"desc1_modif\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/restapi/entidad/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"restapi",
+						"entidad",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/restapi/entidad/{not_found_id}",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "345pasdf2340986asdf"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"entity_1_modif\",\r\n    \"description\": \"desc1_modif\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/restapi/entidad/8",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"restapi",
+						"entidad",
+						"8"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
