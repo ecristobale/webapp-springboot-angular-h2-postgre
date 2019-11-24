@@ -31,4 +31,9 @@ public class MyEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	@Override
+	public String toString() {
+		return "MyEntity [id=" + id + ", name=" + name 
+				+ ", description=" + description + "]";
+	}
 }
