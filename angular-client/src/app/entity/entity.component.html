@@ -1,0 +1,24 @@
+<div class="col-md-6">
+    <h2>Entity Details</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="hidden">Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let entity of entities | async" >
+                <td class="hidden">{{entity.id}}</td>
+                <td>{{entity.name}}</td>
+                <td>{{entity.description}}</td>
+                <td><button class="btn btn-danger" (click)="onDelete(entity.id)">Delete Entity</button>
+                    <button class="btn btn-success" (click)="onEdit(entity.id)">Edit Entity</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
