@@ -47,4 +47,9 @@ public class MyService implements IMyService {
 	public void setMyRepository(IMyRepository myRepository) {
 		this.myRepository = myRepository;
 	}
+
+	@Override
+	public List<MyEntity> searchEntitiesByName(String name) {
+		return myRepository.searchEntitiesByName(name);
+	}
 }

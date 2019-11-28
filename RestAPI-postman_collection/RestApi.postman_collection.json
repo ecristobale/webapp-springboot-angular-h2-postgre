@@ -222,6 +222,68 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "localhost:8081/restapi/entidad/search?name={name}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "345pasdf2340986asdf"
+					}
+				],
+				"url": {
+					"raw": "localhost:8081/restapi/entidad/search?name=ty_1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"restapi",
+						"entidad",
+						"search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "ty_1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/restapi/entidad/search?name={name} Copy",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "345pasdf2340986asdf"
+					}
+				],
+				"url": {
+					"raw": "localhost:8081/restapi/entidad/search?name=notfoundname",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"restapi",
+						"entidad",
+						"search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "notfoundname"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecristobale.microserv.restapi.models.MyEntity;
@@ -75,6 +76,20 @@ public class RestApiResource {
 
         return new ResponseEntity<>(myService.updateMyEntity(myEntity, id), responseHeaders, HttpStatus.OK);
     }
+	
+	@RequestMapping(method = RequestMethod.GET, value = "entidad/search"
+			, produces = "application/json")
+	public ResponseEntity<?> searchEntitiesByName(@RequestParam("name") String name,
+    		@RequestHeader("Authorization") String authToken) {
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add(authToken, "searchEntitiesByName");
+		List<MyEntity> entities = myService.searchEntitiesByName(name);
+		if(entities == null || entities.size() == 0) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		ResponseEntity<List<MyEntity>> responseEntity = new ResponseEntity<List<MyEntity>>(entities, responseHeaders, HttpStatus.OK);
+		return responseEntity;
+	}
 
 	public IMyService getMyService() {
 		return myService;

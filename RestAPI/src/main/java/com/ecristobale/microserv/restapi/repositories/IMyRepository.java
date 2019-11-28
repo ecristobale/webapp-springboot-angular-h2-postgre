@@ -2,8 +2,6 @@ package com.ecristobale.microserv.restapi.repositories;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import com.ecristobale.microserv.restapi.models.MyEntity;
 
 public interface IMyRepository {
@@ -17,5 +15,6 @@ public interface IMyRepository {
 	boolean deleteMyEntity(long id);
 
 	boolean updateMyEntity(MyEntity myEntity, Long id);
-
+	
+	List<MyEntity> searchEntitiesByName(String name);
 }

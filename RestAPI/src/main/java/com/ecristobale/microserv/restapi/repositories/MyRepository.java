@@ -23,6 +23,7 @@ JdbcTemplate jdbcTemplate;
 	private final String SQL_INSERT_ENTITY = "insert into entity(name, description) values(?,?)";
 	private final String SQL_DELETE_ENTITY = "delete from entity where id = ?";
 	private final String SQL_UPDATE_ENTITY = "update entity set name = ?, description = ? where id = ?";
+	private final String SQL_SEARCH_ENTITY = "select * from entity where name like ?";
 	
 	@Autowired
 	public MyRepository(DataSource dataSource) {
@@ -59,5 +60,11 @@ JdbcTemplate jdbcTemplate;
 	@Override
 	public boolean updateMyEntity(@Valid MyEntity myEntity, Long id) {
 		return (jdbcTemplate.update(SQL_UPDATE_ENTITY, myEntity.getName(), myEntity.getDescription(), id)) > 0;
+	}
+
+	@Override
+	public List<MyEntity> searchEntitiesByName(String name) {
+		name = "%".concat(name).concat("%");
+		return jdbcTemplate.query(SQL_SEARCH_ENTITY, new Object[] {name}, new MyEntityMapper());
 	}
 }

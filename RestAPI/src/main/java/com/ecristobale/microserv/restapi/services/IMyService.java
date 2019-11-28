@@ -2,8 +2,6 @@ package com.ecristobale.microserv.restapi.services;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import com.ecristobale.microserv.restapi.models.MyEntity;
 
 public interface IMyService {
@@ -18,4 +16,5 @@ public interface IMyService {
 
 	boolean updateMyEntity(MyEntity myEntity, Long id);
 
+	List<MyEntity> searchEntitiesByName(String name);
 }
