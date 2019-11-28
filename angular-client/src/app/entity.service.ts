@@ -21,25 +21,34 @@ export class EntityService {
 
   public getEntities(): Observable<any> {
     console.log('getEntities called');
-    return this.http.get(`${entityUrl}`, httpOptions);
+    return this.http.get(`${entityUrl}`, httpOptions).pipe(
+      tap(entities => console.log(`fetched entities`)),
+      catchError(this.handleError('getEntities', []))
+    );
   }
 
   public getEntity(id: number): Observable<Entity> {
     const url = `${entityUrl}/${id}`;
     console.log('getEntity called');
     return this.http.get<Entity>(url, httpOptions).pipe(
-      tap(_ => console.log(`fetched entity id=${id}`)),
+      tap(_ => console.log(`fetched entity with id=${id}`)),
       catchError(this.handleError<Entity>(`getEntity id=${id}`))
     );
   }
 
   public createEntity(entity: Entity) {
-    return this.http.post<Entity>(entityUrl, entity);
+    return this.http.post<Entity>(entityUrl, entity).pipe(
+      tap((entity: Entity) => console.log(`Entity added with id=${entity.id}`)),
+      catchError(this.handleError<Entity>('addEntity'))
+    );
   }
 
   public deleteEntityById(id: number) {
     const url = `${entityUrl}/${id}`;
-    return this.http.delete(url, httpOptions);
+    return this.http.delete(url, httpOptions).pipe(
+      tap(_ => console.log(`deleted entity with id=${id}`),
+      catchError(this.handleError<Entity>('deleteEntity')))
+    );
   }
 
   public updateEntity(entity: Entity): Observable<any> {
