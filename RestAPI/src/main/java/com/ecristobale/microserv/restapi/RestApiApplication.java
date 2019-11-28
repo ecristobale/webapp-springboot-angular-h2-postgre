@@ -22,10 +22,6 @@ public class RestApiApplication {
 	
 	@Value("${spring.datasource.password}")
 	private String pwd;
-
-	public static void main(String[] args) {
-		SpringApplication.run(RestApiApplication.class, args);
-	}
 	
 	@Bean
 	DataSource dataSource() {
@@ -35,6 +31,10 @@ public class RestApiApplication {
 		driverManagerDataSource.setPassword(pwd);
 		driverManagerDataSource.setDriverClassName(driver);
 		return driverManagerDataSource;
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(RestApiApplication.class, args);
 	}
 
 }
