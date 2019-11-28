@@ -14,7 +14,7 @@ import com.ecristobale.microserv.restapi.models.MyEntity;
 import com.ecristobale.microserv.restapi.models.MyEntityMapper;
 
 @Repository
-public class MyRepository {
+public class MyRepository implements IMyRepository {
 
 JdbcTemplate jdbcTemplate;
 	
@@ -29,6 +29,7 @@ JdbcTemplate jdbcTemplate;
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
+	@Override
 	public List<MyEntity> getAllEntidad() {
 		//return Arrays.asList(new MyEntity("entidad1", "descripcion"), new MyEntity("entidad2","descripcion"));
 		//String SQL = "SELECT id, name, description FROM entity";
@@ -36,6 +37,7 @@ JdbcTemplate jdbcTemplate;
 		return jdbcTemplate.query(SQL_GET_ALL, new MyEntityMapper()) ;
 	}
 
+	@Override
 	public MyEntity getEntidadById(long id) {
 		try {
 			return jdbcTemplate.queryForObject(SQL_FIND_ENTITY, new Object[] {id},new MyEntityMapper()) ;
@@ -44,14 +46,17 @@ JdbcTemplate jdbcTemplate;
 		}
 	}
 
+	@Override
 	public boolean createMyEntity(MyEntity myEntity) {
 		return (jdbcTemplate.update(SQL_INSERT_ENTITY, myEntity.getName(), myEntity.getDescription())) > 0;
 	}
 
+	@Override
 	public boolean deleteMyEntity(long id) {
 		return (jdbcTemplate.update(SQL_DELETE_ENTITY, id)) > 0;
 	}
 
+	@Override
 	public boolean updateMyEntity(@Valid MyEntity myEntity, Long id) {
 		return (jdbcTemplate.update(SQL_UPDATE_ENTITY, myEntity.getName(), myEntity.getDescription(), id)) > 0;
 	}

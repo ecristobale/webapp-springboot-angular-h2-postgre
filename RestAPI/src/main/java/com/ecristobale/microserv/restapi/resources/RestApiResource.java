@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecristobale.microserv.restapi.models.MyEntity;
-import com.ecristobale.microserv.restapi.services.MyService;
+import com.ecristobale.microserv.restapi.services.IMyService;
 
 @RestController @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/restapi/")
 public class RestApiResource {
 	
 	@Autowired
-	MyService myService;
+	IMyService myService;
 
 	@RequestMapping(method = RequestMethod.GET, value = "entidad/{idRequest}"
 			, produces = "application/json")
@@ -76,10 +76,10 @@ public class RestApiResource {
         return new ResponseEntity<>(myService.updateMyEntity(myEntity, id), responseHeaders, HttpStatus.OK);
     }
 
-	public MyService getMyService() {
+	public IMyService getMyService() {
 		return myService;
 	}
-	public void setMyService(MyService myService) {
+	public void setMyService(IMyService myService) {
 		this.myService = myService;
 	}
 }

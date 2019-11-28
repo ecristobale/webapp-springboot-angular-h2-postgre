@@ -8,38 +8,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ecristobale.microserv.restapi.models.MyEntity;
-import com.ecristobale.microserv.restapi.repositories.MyRepository;
+import com.ecristobale.microserv.restapi.repositories.IMyRepository;
 
 @Service
-public class MyService {
+public class MyService implements IMyService {
 	
 	@Autowired
-	private MyRepository myRepository;
+	private IMyRepository myRepository;
 
+	@Override
 	public List<MyEntity> getAllEntidad() {
 		return myRepository.getAllEntidad();
 	}
 	
+	@Override
 	public MyEntity getEntidadById(long id) {
 		return myRepository.getEntidadById(id);
 	}
 	
+	@Override
 	public boolean createMyEntity(MyEntity myEntity) {
 		return myRepository.createMyEntity(myEntity);
 	}
 	
+	@Override
 	public boolean deleteMyEntity(long id) {
 		return myRepository.deleteMyEntity(id);
 	}
 	
+	@Override
 	public boolean updateMyEntity(@Valid MyEntity myEntity, Long id) {
 		return myRepository.updateMyEntity(myEntity, id);
 	}
 
-	public MyRepository getMyRepository() {
+	public IMyRepository getMyRepository() {
 		return myRepository;
 	}
-	public void setMyRepository(MyRepository myRepository) {
+	public void setMyRepository(IMyRepository myRepository) {
 		this.myRepository = myRepository;
 	}
 }
