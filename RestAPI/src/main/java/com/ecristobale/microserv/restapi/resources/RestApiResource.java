@@ -61,6 +61,9 @@ public class RestApiResource {
     		@RequestHeader("Authorization") String authToken) {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add(authToken, "deleteById");
+		if(myService.getEntidadById(id) == null) {
+			return new ResponseEntity<>(false, responseHeaders, HttpStatus.NOT_FOUND);
+		}
 		boolean deleted = myService.deleteMyEntity(id);
         return new ResponseEntity<>(deleted, responseHeaders, deleted ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
