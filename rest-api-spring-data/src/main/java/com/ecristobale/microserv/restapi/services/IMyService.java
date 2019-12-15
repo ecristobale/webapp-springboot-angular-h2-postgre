@@ -2,7 +2,10 @@ package com.ecristobale.microserv.restapi.services;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.ecristobale.microserv.restapi.models.MyEntity;
+import com.ecristobale.microserv.restapi.models.MyFile;
 
 public interface IMyService {
 
@@ -17,4 +20,6 @@ public interface IMyService {
 	boolean updateMyEntity(MyEntity myEntity, Long id);
 
 	List<MyEntity> searchEntitiesByName(String name);
+
+	void createMyFile(MultipartFile file, long idMyEntity);
 }

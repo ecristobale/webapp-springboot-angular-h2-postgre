@@ -1,7 +1,7 @@
 package com.ecristobale.microserv.restapi.resources;
 
+import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ecristobale.microserv.restapi.models.MyEntity;
+import com.ecristobale.microserv.restapi.models.MyFile;
 import com.ecristobale.microserv.restapi.services.IMyService;
 
 @RestController @CrossOrigin(origins = "http://localhost:4200")
@@ -55,6 +57,13 @@ public class RestApiResource {
 	@RequestMapping(method = RequestMethod.POST, value = "entidad")
     public ResponseEntity<?> create(@Valid @RequestBody MyEntity myEntity) {
         return ResponseEntity.ok(myService.createMyEntity(myEntity));
+    }
+	
+	@RequestMapping(method = RequestMethod.POST, value = "entidadFich/{idEntidad}")
+    public ResponseEntity<?> addFile(@RequestParam("miFich") MultipartFile file,
+    		@PathVariable(value="idEntidad") long idMyEntity) {
+		myService.createMyFile(file, idMyEntity);
+		return null;//ResponseEntity.ok(myService.createMyEntity(myEntity));
     }
 	
 	@RequestMapping(method = RequestMethod.DELETE, value = "entidad/{idRequest}")
